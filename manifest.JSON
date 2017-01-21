@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0.0.0 build 1 rev 1",
+  "short_name": "SRS",
+  "name": "SRS",
+  "lang": "en",
+  "default_locale": "en",
+  "description": "SRS",
+  "author": "Thijs",
+  "start_url": "index.php",
+  "display": "standalone",
+  "orientation": "portrait"
+}
