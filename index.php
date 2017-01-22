@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/bootstrap.paper.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
         <script src="js/ui.js"></script>
+        <script src="js/time.js"></script>
+        <script src="js/srs.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -27,10 +30,7 @@
 </td>
   <td style="width:33%;"><div class="dropdown">
 
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:orange; width: 100%; height: 50%;">
-    English
-    <span class="caret"></span>
-  </button>
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:orange; width: 100%; height: 50%;">English<span class="caret"></span></button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
