@@ -12,7 +12,13 @@ switch ($action){
     case "GET_LEFT":
         $database = new Database();
         $lang = isset($_POST["lang"]) ? $_POST["lang"] : "";
-        echo json_encode($database->get_lang($lang));
+        echo json_encode($database->get_left($lang));
+        die();
+        break;
+
+    case "GET_LANG":
+        $database = new Database();
+        echo json_encode($database->get_lang());
         die();
         break;
 

@@ -24,48 +24,50 @@
   <div class="jumbotron content">
     <table border="0" style="width: 100%; height: 100%;">
       <tr style="width:100%; height: 50%">
-    <td style="width:33%;"><div class="alert alert-success" role="alert" id="status"><p class="statustext" onclick="$('#wrapper').hide('fast',function(){$('#flop').show('fast');});"><strong>0</strong> left</p></div>
+    <td style="width:33%;"><div class="alert alert-success" role="alert"><p class="statustext" id="status"><strong>0</strong> left</p></div>
 </td>
-<td style="width:33%;"><div class="alert alert-danger" role="alert" id="status"><p class="statustext">Language:</p></div>
+<td style="width:33%;"><div class="alert alert-danger" role="alert"><p class="statustext">Language:</p></div>
 </td>
   <td style="width:33%;"><div class="dropdown">
 
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:orange; width: 100%; height: 50%;">English<span class="caret"></span></button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:orange; width: 100%; height: 50%;">None<span class="caret"></span></button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="droppeddownMenu1">
   </ul>
 </div>
 
   </td>
 </tr>
 <tr style="width:100%; height: 50%">
-  <td style="width:33%;"></td>
-    <td style="width:33%;"></td>
-    <td style="width:33%;"></td>
+  <td style="width:33%;"><div class="alert alert-info" role="alert" onclick="$('#wrapper').fadeOut('fast',function(){$('#list').fadeIn('fast')});getWords();"><p class="statustext click">List</p></div></td>
+    <td style="width:33%;"><div class="alert alert-warning" role="alert"><p class="statustext click">Test</p></div></td>
+    <td style="width:33%;"><div class="alert alert-success" role="alert"><p class="statustext click">Add</p></div></td>
 </tr>
     </table>
 
 </div>
 </div>
-<div id="flop">
-  <div class="jumbotron content">
-    <table border="0" style="width: 100%; height: 100%;">
-      <tr style="width:100%; height: 50%">
-    <td style="width:33%;">    <div class="alert alert-danger" role="alert" id="status"><p class="statustext" onclick="$('#flop').hide('fast',function(){$('#wrapper').show('fast');});"><strong>0</strong> left</p></div>
+<div id="list">
+  <div class="jumbotron dalist">
+    <table border="0" style="width: 100%; height: 100%;" id="listtable">
+      <tr style="width:100%; height: 10%">
+    <td style="width:33%;"><div class="alert alert-danger" role="alert"><p class="listtext" id="listtableheader"></p></div>
 </td>
-<td style="width:33%;"><div class="alert alert-danger" role="alert" id="status"><p class="statustext">Language:</p></div>
+<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" id="listtableadd">Add Word</p></div>
 </td>
-  <td style="width:33%;"><div class="alert alert-danger" role="alert" id="status"><p class="statustext">English</p></div>
-  </td>
+<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" onclick="$('#list').fadeOut('fast',function(){$('#wrapper').fadeIn('fast')});">Back</p></div>
+</td>
 </tr>
-<tr style="width:100%; height: 50%">
-  <td style="width:33%;"></td>
-    <td style="width:33%;"></td>
-    <td style="width:33%;"></td>
+<tr style="width:100%; height: 10%">
+  <td style="width:33%;"><div class="alert alert-info" role="alert"><p class="listtext click" id="listtableback"><<</p></div></td>
+    <td style="width:33%;"><div class="alert alert-warning" role="alert"><p class="listtext" id="listtablepage"></p></div></td>
+    <td style="width:33%;"><div class="alert alert-info" role="alert"><p class="listtext click" id="listtablenext">>></p></div></td>
+</tr>
+<tr style="width:100%; height: 5%">
+</tr>
+<tr style="width:100%; height: 5%;">
+  <td style="width:33%;"><div class="alert alert-info" role="alert"><p class="listheader">Word</p></div></td>
+  <td style="width:33%;"><div class="alert alert-info" role="alert"><p class="listheader">Meaning</p></div></td>
+  <td style="width:33%;"><div class="alert alert-info" role="alert"><p class="listheader">Status</p></div></td>
 </tr>
     </table>
 

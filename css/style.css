@@ -8,13 +8,22 @@ body{
 .content{
 vertical-align: middle;
 background-color: #CFCFCF;
-margin: 40vh auto 0 auto;
+margin: 35vh auto 0 auto;
 padding: 0;
 height: 30vh;
 width: 40vw;
 }
 
-#status{
+.dalist{
+  vertical-align: middle;
+  background-color: #CFCFCF;
+  margin: 5vh auto 0 auto;
+  padding: 0;
+  height: 80vh;
+  width: 60vw;
+}
+
+.alert{
   margin:0;
   padding: 0;
 }
@@ -22,10 +31,39 @@ width: 40vw;
 p.statustext{
   font-size: 31px;
   padding: 0;
+  text-align: center;
+}
+
+p.listtext{
+  font-size: 25px;
+  padding: 0;
+  text-align: center;
+}
+
+.listheader{
+  font-size: 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.listcontent{
+  font-size: 14px;
+  background-color: #b6ccef;
+  padding: 0;
+  text-align: center;
+}
+
+.click{
+  cursor: pointer;
 }
 
 #dropdownMenu1{
   font-size: 31px;
   padding: 0;
   font-weight: lighter;
+}
+
+#droppeddownMenu1{
+  background-color: blue;
+  font-size: 22px;
 }

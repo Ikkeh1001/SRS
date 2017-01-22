@@ -18,10 +18,10 @@ class Database{
         }
     }
 
-    function get_lang($lang){
+    function get_left($lang){
       try{
         $returnData = array();
-        $stmt = $this->dbh->prepare("SELECT * FROM $lang");
+        $stmt = $this->dbh->prepare("SELECT * FROM $lang ORDER BY Status ASC");
         $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -29,6 +29,7 @@ class Database{
             $obj->word = $row["Word"];
             $obj->meaning = $row["Meaning"];
             $obj->status = $row["Status"];
+            $obj->timestamp = $row["Timestamp"];
             $returnData[] = $obj;
         }
         return $returnData;
@@ -37,6 +38,25 @@ class Database{
         die();
     }
     }
+
+    function get_lang(){
+      try{
+        $returnData = array();
+        $stmt = $this->dbh->prepare("SELECT * FROM languages");
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $obj = new stdClass();
+            $obj->language = $row["language"];
+            $returnData[] = $obj;
+        }
+        return $returnData;
+
+      }catch (PDOException $e){
+          echo "get_locations failed.";
+          die();
+    }
+  }
 
     function group_exists($group){
         try {
