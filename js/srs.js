@@ -1,6 +1,11 @@
 var numberleft = 0;
 var wordnumber = 0;
 var currentpage = 1;
+var savedwords = [];
+var testresults = [];
+var updatedwords = {};
+var status = "";
+var updatedandsentwords = 0;
 
 $(document).ready(function(){
 
@@ -13,16 +18,19 @@ $.post("api.php", {
 },function(data){
   var response=JSON.parse(data);
   numberleft = 0;
+  savedwords = [];
   response.forEach(function(element){
     var thisstatus = element["status"];
     if (thisstatus.substring(3,4) == "1" && parseInt(element["timestamp"])+xxx1 < $.now()){
       this.numberleft++;
+      savedwords.push(element);
       return;
     }
     var vartime = thisstatus.substring(0,2);
     vartime = "t"+vartime+"xx";
     if (parseInt(element["timestamp"])+ window[vartime] < $.now()){
       this.numberleft++;
+      savedwords.push(element);
       return;
     }
   });
@@ -80,4 +88,84 @@ $.post("api.php", {
   $("#listtable").append(differenthtml);
 }
 );
+}
+
+function updatewords(){
+  console.log(testresults);
+  var now = $.now();
+  testresults.forEach(function(element){
+    if (!element["correct"]){
+      console.log("shit");
+      status = element["status"].substring(0,3)+"1";
+      updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+    }
+    else{
+    switch(element["status"].substring(0,1)){
+      case "0":
+
+      switch(element["status"].substring(1,2)){
+        case "0":
+        status = "01"+element["status"].substring(2,3)+"0";
+        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        break;
+        case "1":
+        status = "02"+element["status"].substring(2,3)+"0";
+        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        break;
+        case "2":
+        if (element["status"].substring(2,3) != "1"){
+          status = "03"+element["status"].substring(2,3)+"0";
+        }
+        else{
+          status = "10"+element["status"].substring(2,3)+"0";
+        }
+        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        break;
+        case "3":
+        if (element["status"].substring(2,3) == "3"){
+          status = "04"+element["status"].substring(2,3)+"0";
+        }
+        else{
+          status = "10"+element["status"].substring(2,3)+"0";
+        }
+        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        break;
+        case "4":
+        status = "10"+element["status"].substring(2,3)+"0";
+        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        break;
+      }
+      break;
+
+      case "1":
+
+      break;
+      case "2":
+      break;
+      case "3":
+      break;
+      case "4":
+      break;
+      case "5":
+      break;
+      case "6":
+      break;
+      default:
+      console.log("sumtingwong");
+    }}
+    var wordupdate = updatedwords["word"];
+    var newstatus = updatedwords["newstatus"];
+    var timestamp = updatedwords["timestamp"];
+
+      $.post("api.php",{
+        "action":"UPDATE_STATUS",
+        "lang":lang,
+        "word":wordupdate,
+        "newstatus":newstatus,
+        "timestamp":timestamp
+      });
+
+    //updatedandsentwords++
+  });
+
 }

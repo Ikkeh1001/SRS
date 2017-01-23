@@ -23,6 +23,33 @@ width: 40vw;
   width: 60vw;
 }
 
+.dastarttest{
+  vertical-align: middle;
+  background-color: #CFCFCF;
+  margin: 40vh auto 0 auto;
+  padding: 0;
+  height: 15vh;
+  width: 30vw;
+}
+
+.damaintest{
+  vertical-align: middle;
+  background-color: #CFCFCF;
+  margin: 20vh auto 0 auto;
+  padding: 0;
+  height: 50vh;
+  width: 60vw;
+}
+
+.dastoptest{
+  vertical-align: middle;
+  background-color: #CFCFCF;
+  margin: 40vh auto 0 auto;
+  padding: 0;
+  height: 15vh;
+  width: 30vw;
+}
+
 .alert{
   margin:0;
   padding: 0;
@@ -53,6 +80,24 @@ p.listtext{
   text-align: center;
 }
 
+p.teststartstop{
+  font-size: 40px;
+  padding: 0;
+  text-align: center;
+}
+
+p.testmain{
+  font-size: 30px;
+  padding: 0;
+  text-align: center;
+}
+
+p.testmainbl{
+  font-size: 23px;
+  padding: 0;
+  text-align: center;
+}
+
 .click{
   cursor: pointer;
 }
@@ -66,4 +111,12 @@ p.listtext{
 #droppeddownMenu1{
   background-color: blue;
   font-size: 22px;
+}
+
+#inputtestmeaning.form-control::-webkit-input-placeholder { color: #888888; text-align: center;}
+#inputtestmeaning.form-control:-moz-placeholder { color: #888888; text-align: center; }
+#inputtestmeaning.form-control::-moz-placeholder { color: #888888; text-align: center; }
+#inputtestmeaning.form-control:-ms-input-placeholder { color: #888888; text-align: center; }
+#inputtestmeaning{
+  text-align: center;
 }

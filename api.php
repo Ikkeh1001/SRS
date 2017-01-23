@@ -34,6 +34,23 @@ switch ($action){
         die();
         break;
 
+    case "UPDATE_STATUS":
+        $database = new Database();
+        $lang = isset($_POST["lang"]) ? $_POST["lang"] : "";
+        $word = isset($_POST["word"]) ? $_POST["word"] : "";
+        $status = isset($_POST["newstatus"]) ? $_POST["newstatus"] : "";
+        $timestamp = isset($_POST["timestamp"]) ? $_POST["timestamp"] : "";
+        $database->update_status($lang,$word,$status,$timestamp);
+        die();
+        break;
+
+    case "SET_LANG":
+        $database = new Database();
+        $lang = isset($_POST["lang"]) ? $_POST["lang"] : "";
+        $database->set_lang($lang);
+        die();
+        break;
+
     case "NEW_GROUP":
         $group = new Group();
         $obj = new stdClass();

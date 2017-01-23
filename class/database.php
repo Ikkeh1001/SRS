@@ -42,7 +42,7 @@ class Database{
     function get_lang(){
       try{
         $returnData = array();
-        $stmt = $this->dbh->prepare("SELECT * FROM languages");
+        $stmt = $this->dbh->prepare("SELECT * FROM languages ORDER BY language ASC");
         $stmt->execute();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -78,6 +78,45 @@ class Database{
   }
 }
 
+function update_status($lang,$word,$status,$timestamp){
+  try{
+    $stmt = $this->dbh->prepare("UPDATE $lang SET status=:status, timestamp=:timestamp WHERE word=:word");
+    $stmt->bindParam(':word', $word);
+    $stmt->bindParam(':status', $status);
+    $stmt->bindParam(':timestamp', $timestamp);
+    $stmt->execute();
+  }catch (PDOException $e){
+      echo "get_locations failed.";
+      die();
+}
+}
+
+  function set_lang($lang){
+    try{
+      if($this->lang_exists($lang)){
+      die();
+    }
+    else{
+    $stmt = $this->dbh->prepare("INSERT INTO languages (language) VALUES (:language)");
+    $stmt->bindParam(':language', $lang);
+    $stmt->execute();
+    $stmt = $this->dbh->prepare("CREATE TABLE $lang (
+      `Id` int(6) NOT NULL AUTO_INCREMENT,
+      `Word` varchar(40) NOT NULL,
+      `Meaning` varchar(100) NOT NULL,
+      `Status` varchar(4) NOT NULL,
+      `Timestamp` bigint(20) NOT NULL,
+      PRIMARY KEY (`Id`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1;");
+    $stmt->execute();
+  }
+
+  }catch (PDOException $e){
+      echo "get_locations failed.";
+      die();
+}
+}
+
     function word_exists($lang,$word){
       try {
         $stmt = $this->dbh->prepare("SELECT * FROM $lang WHERE word=:word");
@@ -93,6 +132,22 @@ class Database{
         echo "group_exists failed.";
         die();
     }
+}
+
+  function lang_exists($lang){
+    try {
+      $stmt = $this->dbh->prepare("SELECT * FROM languages WHERE language=:lang");
+      $stmt->bindParam(':lang', $lang);
+      $stmt->execute();
+      if($stmt->rowCount() > 0) {
+        return true;
+      }else{
+        return false;
+      }
+    }catch(PDOException $e){
+      echo "group_exists failed.";
+      die();
+}
 }
 
     function group_exists($group){
