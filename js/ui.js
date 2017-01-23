@@ -1,5 +1,6 @@
 var lang = "";
 var templ = "";
+var addwordsfault = false;
 
 $(document).ready(function () {
 $("#list").hide();
@@ -54,4 +55,31 @@ function changeLanguage(tmp){
   var differenthtml = "List of <strong>"+lang+"</strong> words";
   $("#listtableheader").html(differenthtml);
   languages();
+}
+
+function newWord(){
+  if(!$("#inputword").val() || !$("#inputmeaning").val()){
+    if (!addwordsfault){
+      var differenthtml = "<p style='color:red;margin:10px 0 0 0;'><strong>You must fill in all fields!</strong></p>";
+      $("#addwordsbody").append(differenthtml);
+    }
+    addwordsfault = true;
+    }
+    else{
+      var word = $("#inputword").val();
+      var meaning = $("#inputmeaning").val();
+      var difficulty = $("#inputdiff option:selected").text();
+      var now = $.now();
+      $.post("api.php",{
+        "action":"SET_WORD",
+        "lang":lang,
+        "word":word,
+        "meaning":meaning,
+        "difficulty":difficulty,
+        "timestamp": now
+      });
+$('.modal-backdrop').hide();
+      $("#addword").hide();
+    }
+
 }

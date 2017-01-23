@@ -46,13 +46,16 @@
 
 </div>
 </div>
+
+
+
 <div id="list">
   <div class="jumbotron dalist">
     <table border="0" style="width: 100%; height: 100%;" id="listtable">
       <tr style="width:100%; height: 10%">
     <td style="width:33%;"><div class="alert alert-danger" role="alert"><p class="listtext" id="listtableheader"></p></div>
 </td>
-<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" id="listtableadd">Add Word</p></div>
+<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" id="listtableadd" data-toggle="modal" data-target="#addword">Add Word</p></div>
 </td>
 <td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" onclick="$('#list').fadeOut('fast',function(){$('#wrapper').fadeIn('fast')});">Back</p></div>
 </td>
@@ -73,5 +76,36 @@
 
 </div>
 </div>
+
+
+
+<div class="modal fade" id="addword" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Add a Word</h4>
+          </div>
+          <div class="modal-body" id="addwordsbody">
+            <p><strong>Word:</strong></p>
+            <input type="text" class="form-control" id="inputword" placeholder="cat"><br>
+            <p><strong>Meaning (seperated by ', ') :</strong></p>
+            <input type="text" class="form-control" id="inputmeaning" placeholder="poes"><br>
+            <table style="width: 100%"><tr style="width: 100%"><td style="width: 50%">
+            <p><strong>Difficulty (1: easy, 2: moderate, 3: hard) :</strong></p></td>
+            <td style="width: 50%"><div class="form-group">
+  <select class="selectpicker" id="inputdiff" style="width: 100%">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+</div></td>
+          </tr></table>
+              <button class="btn btn-primary btn-block" onclick="newWord();">Submit Word</button>
+          </div>
+</div>
+</div>
+</div>
+
 </body>
 </html>

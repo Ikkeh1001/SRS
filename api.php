@@ -22,6 +22,18 @@ switch ($action){
         die();
         break;
 
+    case "SET_WORD":
+        $database = new Database();
+        $lang = isset($_POST["lang"]) ? $_POST["lang"] : "";
+        $word = isset($_POST["word"]) ? $_POST["word"] : "";
+        $meaning = isset($_POST["meaning"]) ? $_POST["meaning"] : "";
+        $difficulty = isset($_POST["difficulty"]) ? $_POST["difficulty"] : "";
+        $timestamp = isset($_POST["timestamp"]) ? $_POST["timestamp"] : "";
+        $status = "00".$difficulty."0";
+        $database->set_word($lang,$word,$meaning,$status,$timestamp);
+        die();
+        break;
+
     case "NEW_GROUP":
         $group = new Group();
         $obj = new stdClass();

@@ -58,6 +58,43 @@ class Database{
     }
   }
 
+  function set_word($lang,$word,$meaning,$status,$timestamp){
+    try{
+      if($this->word_exists($lang,$word)){
+        $stmt = $this->dbh->prepare("UPDATE $lang SET word=:word, meaning=:meaning, status=:status, timestamp=:timestamp WHERE word=:word");
+      }
+      else{
+      $stmt = $this->dbh->prepare("INSERT INTO $lang (word, meaning, status, timestamp) VALUES (:word, :meaning, :status, :timestamp)");
+    }
+
+      $stmt->bindParam(':word', $word);
+      $stmt->bindParam(':meaning', $meaning);
+      $stmt->bindParam(':status', $status);
+      $stmt->bindParam(':timestamp', $timestamp);
+      $stmt->execute();
+    }catch (PDOException $e){
+        echo "get_locations failed.";
+        die();
+  }
+}
+
+    function word_exists($lang,$word){
+      try {
+        $stmt = $this->dbh->prepare("SELECT * FROM $lang WHERE word=:word");
+        $stmt->bindParam(':word', $word);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }catch(PDOException $e){
+        echo "group_exists failed.";
+        die();
+    }
+}
+
     function group_exists($group){
         try {
             $stmt = $this->dbh->prepare("SELECT * FROM sessions WHERE room=:room");
