@@ -24,46 +24,46 @@ every difficulty lvl adds one extra time}
 
  xxx1 : 0s
  00xx : 0s
- 01xx : 30s
- 02xx : 1m
-(03xx): 1,5m
-(04xx): 2m
+ 01xx : 15s
+ 02xx : 30s
+(03xx): 1m
+(04xx): 1.5m
 
 if second digit is zero before decrease go to 00xx.
 
- 10xx : 2h
- 11xx : 4h
- 12xx : 16h
-(13xx): 12h (diff 2+3)
+ 10xx : 1h
+ 11xx : 2h
+ 12xx : 4h
+(13xx): 4h (diff 2+3)
 
 if second digit is zero before decrease go to 11xx.
 
- 20xx : 1d
- 21xx : 2d
- 22xx : 3d
- 23xx : 5d
-(24xx): 4d
-(25xx): 5d
+ 20xx : 8h
+ 21xx : 16h
+ 22xx : 1d
+ 23xx : 2d
+(24xx): 1d
+(25xx): 1d
 
 if second digit is zero before decrease go to 22xx.
 
- 30xx : 7d
- 31xx : 14d
- 32xx : 21d
- 33xx : 28d
-(34xx): 28d (diff 2+3)
+ 30xx : 4d
+ 31xx : 7d
+ 32xx : 10d
+ 33xx : 14d
+(34xx): 14d (diff 2+3)
 
 if second digit is zero before decrease go to 32xx.
 
- 40xx : 30d
- 41xx : 60d
- 42xx : 120d
+ 40xx : 21d
+ 41xx : 45d
+ 42xx : 90d
 
 if second digit is zero before decrease go to 41xx.
  
  50xx : 0.5y
- 51xx : 1y
- 52xx : 2y
+ 51xx : 0.75y
+ 52xx : 1y
 
  6xxx : 2y
  
