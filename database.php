@@ -107,7 +107,7 @@ function update_status($lang,$word,$status,$timestamp){
       `Status` varchar(4) NOT NULL,
       `Timestamp` bigint(20) NOT NULL,
       PRIMARY KEY (`Id`)
-    ) ENGINE=MyISAM DEFAULT CHARSET=latin1;");
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
     $stmt->execute();
   }
 

@@ -83,7 +83,7 @@ function languages(){
         $("#testlanguage").html(differenthtml);
         return;
       }
-      var differenthtml = "<li onclick='changeLanguage($(this).html());'><a href='#' style='color:#BBBBBB'>"+element["language"]+"</a></li>";
+      var differenthtml = "<li onclick='changeLanguage($(this).html());'><a href='#' style='color:#BBBBBB;font-size:1.8vw'>"+element["language"]+"</a></li>";
       $("#droppeddownMenu1").append(differenthtml);
     });
   });
@@ -202,7 +202,7 @@ function maintest(){
     else{
       var differenthtml = "<div class='alert alert-danger' role='alert'><p class='testmain'><strong>Wrong</strong></p></div>"
       $("#testfirstoption").html(differenthtml);
-      var differenthtml = "<div class='alert alert-warning' role='alert'><p class='testmain click'><strong>Still correct</strong></p></div>"
+      var differenthtml = "<div class='alert alert-warning' role='alert'><p class='testmain click unselectable'><strong>Still correct</strong></p></div>"
       $("#testsecondoption").html(differenthtml);
       var differenthtml = "<strong>Next</strong>";
       $("#testcontinue").html(differenthtml);

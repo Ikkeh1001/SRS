@@ -37,8 +37,8 @@ width: 40vw;
   background-color: #CFCFCF;
   margin: 20vh auto 0 auto;
   padding: 0;
-  height: 50vh;
-  width: 60vw;
+  height: 42vh;
+  width: 50vw;
 }
 
 .dastoptest{
@@ -56,44 +56,44 @@ width: 40vw;
 }
 
 p.statustext{
-  font-size: 31px;
+  font-size: 2.2vw;
   padding: 0;
   text-align: center;
 }
 
 p.listtext{
-  font-size: 25px;
+  font-size: 1.7vw;
   padding: 0;
   text-align: center;
 }
 
-.listheader{
-  font-size: 20px;
+p.listheader{
+  font-size: 1.3vw;
   padding: 0;
   text-align: center;
 }
 
 .listcontent{
-  font-size: 14px;
+  font-size: 1vw;
   background-color: #b6ccef;
   padding: 0;
   text-align: center;
 }
 
 p.teststartstop{
-  font-size: 40px;
+  font-size: 3vw;
   padding: 0;
   text-align: center;
 }
 
 p.testmain{
-  font-size: 30px;
+  font-size: 2vw;
   padding: 0;
   text-align: center;
 }
 
 p.testmainbl{
-  font-size: 23px;
+  font-size: 1.5vw;
   padding: 0;
   text-align: center;
 }
@@ -103,7 +103,7 @@ p.testmainbl{
 }
 
 #dropdownMenu1{
-  font-size: 31px;
+  font-size: 2.2vw;
   padding: 0;
   font-weight: lighter;
 }
@@ -113,10 +113,28 @@ p.testmainbl{
   font-size: 22px;
 }
 
-#inputtestmeaning.form-control::-webkit-input-placeholder { color: #888888; text-align: center;}
-#inputtestmeaning.form-control:-moz-placeholder { color: #888888; text-align: center; }
-#inputtestmeaning.form-control::-moz-placeholder { color: #888888; text-align: center; }
-#inputtestmeaning.form-control:-ms-input-placeholder { color: #888888; text-align: center; }
+#inputtestmeaning.form-control::-webkit-input-placeholder { color: #888888; text-align: center; font-size:1.1vw;}
+#inputtestmeaning.form-control:-moz-placeholder { color: #888888; text-align: center; font-size:1.1vw;}
+#inputtestmeaning.form-control::-moz-placeholder { color: #888888; text-align: center; font-size:1.1vw;}
+#inputtestmeaning.form-control:-ms-input-placeholder { color: #888888; text-align: center; font-size:1.1vw;}
 #inputtestmeaning{
   text-align: center;
+  font-size: 1.1vw;
+}
+
+h4.modal-title{
+  font-size: 180%;
+}
+
+p.addwordmodaltext{
+  font-size: 117%;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
