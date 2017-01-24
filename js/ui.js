@@ -12,6 +12,10 @@ $("#stoptest").hide();
 
 languages();
 
+$("#listtableadd").click(function(){
+$("#addword").modal('toggle');
+});
+
 $("#listtableback").click(function(){
 if (currentpage != 1){
 currentpage--;
@@ -120,8 +124,8 @@ function newWord(){
         "difficulty":difficulty,
         "timestamp": now
       });
-$('.modal-backdrop').hide();
-      $("#addword").hide();
+//$('.modal-backdrop').hide();
+      $("#addword").modal('toggle');
     }
 }
 
@@ -205,31 +209,43 @@ function maintest(){
       var differenthtml = $("#inputtestmeaning").val()+" -> " + savedwords[testword-1]["meaning"];
       $("#inputtestmeaning").val(differenthtml);
     }
-    var temp = savedwords[testword-1]["word"];
-    var temp2 = savedwords[testword-1]["status"];
-    var obj = {word:temp,correct:questioncorrect,status:temp2};
-    testresults.push(obj);
 
-    testword++;
+
     $("#testcontinue").click(function(event){
       $(this).unbind(event);
       $("#inputtestmeaning").unbind("keypress");
-      if(testword == savedwords.length){
-        $('#maintest').fadeOut('fast',function(){$('#stoptest').fadeIn('fast')});
-        return;
-      }
-      maintest();
+      $("#testsecondoption").unbind("click");
+      tinysubroutine();
     });
+
     $("#inputtestmeaning").keypress(function(event){
         if(event.which == 13){
           $(this).unbind(event);
           $("#testcontinue").unbind("click");
-          if(testword == savedwords.length){
-            $('#maintest').fadeOut('fast',function(){$('#stoptest').fadeIn('fast')});
-            return;
-          }
-          maintest();
+          $("#testsecondoption").unbind("click");
+          tinysubroutine();
         }
       });
+
+      $("#testsecondoption").click(function(event){
+        $(this).unbind(event);
+        $("#testcontinue").unbind("click");
+        $("#inputtestmeaning").unbind("keypress");
+        questioncorrect = true;
+        tinysubroutine();
+      });
+
+      function tinysubroutine(){
+        var temp = savedwords[testword-1]["word"];
+        var temp2 = savedwords[testword-1]["status"];
+        var obj = {word:temp,correct:questioncorrect,status:temp2};
+        testresults.push(obj);
+        if(testword == savedwords.length){
+          $('#maintest').fadeOut('fast',function(){$('#stoptest').fadeIn('fast')});
+          return;
+        }
+        testword++;
+        maintest();
+      }
   }
 }

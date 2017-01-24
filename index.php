@@ -55,9 +55,9 @@
       <tr style="width:100%; height: 10%">
     <td style="width:33%;"><div class="alert alert-danger" role="alert"><p class="listtext" id="listtableheader"></p></div>
 </td>
-<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" id="listtableadd" data-toggle="modal" data-target="#addword">Add/Change Word</p></div>
+<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" id="listtableadd">Add/Change Word</p></div>
 </td>
-<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" onclick="$('#list').fadeOut('fast',function(){$('#wrapper').fadeIn('fast')});">Back</p></div>
+<td style="width:33%;"><div class="alert alert-success" role="alert"><p class="listtext click" onclick="$('#list').fadeOut('fast',function(){$('#wrapper').fadeIn('fast')});getLeft();">Back</p></div>
 </td>
 </tr>
 <tr style="width:100%; height: 10%">

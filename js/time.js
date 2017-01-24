@@ -31,4 +31,4 @@ var t42xx = 120*day;
 var t50xx = 0.5*year;
 var t51xx = year;
 var t52xx = 2*year;
-var t6xxx = 2*year;
+var t60xx = 2*year;

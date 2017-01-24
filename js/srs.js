@@ -42,7 +42,6 @@ setTimeout(function(){
 }
 
 function changeHowManyAreLeft(){
-  console.log(numberleft);
   var differenthtml = "<strong>"+numberleft.toString()+"</strong> left";
   $("#status").fadeOut("fast",function(){
     $(this).html(differenthtml).fadeIn("fast");
@@ -91,11 +90,9 @@ $.post("api.php", {
 }
 
 function updatewords(){
-  console.log(testresults);
   var now = $.now();
   testresults.forEach(function(element){
     if (!element["correct"]){
-      console.log("shit");
       status = element["status"].substring(0,3)+"1";
       updatedwords = {word:element["word"],newstatus:status,timestamp:now};
     }
@@ -105,58 +102,417 @@ function updatewords(){
 
       switch(element["status"].substring(1,2)){
         case "0":
-        status = "01"+element["status"].substring(2,3)+"0";
-        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "01"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "00"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
         break;
+
         case "1":
-        status = "02"+element["status"].substring(2,3)+"0";
-        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "02"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "00"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
         break;
+
         case "2":
-        if (element["status"].substring(2,3) != "1"){
-          status = "03"+element["status"].substring(2,3)+"0";
+        switch(element["status"].substring(3,4)){
+          case "0":
+          if (element["status"].substring(2,3) != "1"){
+            status = "03"+element["status"].substring(2,3)+"0";
+          }
+          else{
+            status = "10"+element["status"].substring(2,3)+"0";
+          }
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "01"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
         }
-        else{
-          status = "10"+element["status"].substring(2,3)+"0";
-        }
-        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
         break;
+
         case "3":
-        if (element["status"].substring(2,3) == "3"){
-          status = "04"+element["status"].substring(2,3)+"0";
+        switch(element["status"].substring(3,4)){
+          case "0":
+          if (element["status"].substring(2,3) == "3"){
+            status = "04"+element["status"].substring(2,3)+"0";
+          }
+          else{
+            status = "10"+element["status"].substring(2,3)+"0";
+          }
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "02"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
         }
-        else{
-          status = "10"+element["status"].substring(2,3)+"0";
-        }
-        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
         break;
+
         case "4":
-        status = "10"+element["status"].substring(2,3)+"0";
-        updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "10"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "03"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
         break;
+
       }
       break;
 
       case "1":
+      switch(element["status"].substring(1,2)){
+        case "0":
 
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "11"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "00"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "1":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "12"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "10"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "2":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          if (element["status"].substring(2,3) != "1"){
+            status = "13"+element["status"].substring(2,3)+"0";
+          }
+          else{
+            status = "20"+element["status"].substring(2,3)+"0";
+          }
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "11"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "3":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "20"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "12"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+    }
       break;
+
       case "2":
+      switch(element["status"].substring(1,2)){
+        case "0":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "21"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "11"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "1":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "22"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "20"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "2":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "23"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "21"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "3":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          if (element["status"].substring(2,3) != "1"){
+            status = "24"+element["status"].substring(2,3)+"0";
+          }
+          else{
+            status = "30"+element["status"].substring(2,3)+"0";
+          }
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "22"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "4":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          if (element["status"].substring(2,3) == "3"){
+            status = "25"+element["status"].substring(2,3)+"0";
+          }
+          else{
+            status = "30"+element["status"].substring(2,3)+"0";
+          }
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "23"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "5":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "30"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "24"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+      }
       break;
+
       case "3":
+      switch(element["status"].substring(1,2)){
+        case "0":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "31"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "22"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "1":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "32"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "30"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "2":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "33"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "31"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "3":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          if (element["status"].substring(2,3) != "1"){
+            status = "34"+element["status"].substring(2,3)+"0";
+          }
+          else{
+            status = "40"+element["status"].substring(2,3)+"0";
+          }
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "32"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "4":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "40"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "33"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+      }
       break;
+
       case "4":
+      switch(element["status"].substring(1,2)){
+
+        case "0":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "41"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "32"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "1":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "42"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "40"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "2":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "50"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "41"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+      }
       break;
+
       case "5":
+      switch(element["status"].substring(1,2)){
+
+        case "0":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "51"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "41"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "1":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "52"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "50"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+        case "2":
+        switch(element["status"].substring(3,4)){
+          case "0":
+          status = "60"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+          case "1":
+          status = "51"+element["status"].substring(2,3)+"0";
+          updatedwords = {word:element["word"],newstatus:status,timestamp:now};
+          break;
+        }
+        break;
+
+      }
       break;
+
       case "6":
+      status = "60"+element["status"].substring(2,3)+"0";
+      updatedwords = {word:element["word"],newstatus:status,timestamp:now};
       break;
+
       default:
       console.log("sumtingwong");
     }}
     var wordupdate = updatedwords["word"];
     var newstatus = updatedwords["newstatus"];
     var timestamp = updatedwords["timestamp"];
-
+    setTimeout(function(){
       $.post("api.php",{
         "action":"UPDATE_STATUS",
         "lang":lang,
@@ -164,8 +520,12 @@ function updatewords(){
         "newstatus":newstatus,
         "timestamp":timestamp
       });
-
-    //updatedandsentwords++
+    }, 20*updatedandsentwords);
+    updatedandsentwords++
   });
+
+  setTimeout(function(){
+    location.reload();
+  }, 50+(20*updatedandsentwords));
 
 }
