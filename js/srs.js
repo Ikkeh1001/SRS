@@ -46,6 +46,14 @@ function changeHowManyAreLeft(){
   $("#status").fadeOut("fast",function(){
     $(this).html(differenthtml).fadeIn("fast");
   });
+  if (numberleft != 0){
+    if(!$("#thetestbutton").attr("onclick")){
+      $("#thetestbutton").attr("onclick","$('#wrapper').fadeOut('fast',function(){$('#starttest').fadeIn('fast')});");
+    }}
+  else{
+    if($("#thetestbutton").attr("onclick")){
+      $("#thetestbutton").removeAttr("onclick");
+    }}
 }
 
 function getWords(){

@@ -39,7 +39,7 @@
 </tr>
 <tr style="width:100%; height: 50%">
   <td style="width:33%;"><div class="alert alert-info" role="alert" onclick="$('#wrapper').fadeOut('fast',function(){$('#list').fadeIn('fast')});getWords();"><p class="statustext click unselectable">List</p></div></td>
-    <td style="width:33%;"><div class="alert alert-warning" role="alert" onclick="$('#wrapper').fadeOut('fast',function(){$('#starttest').fadeIn('fast')});"><p class="statustext click unselectable">Test</p></div></td>
+    <td style="width:33%;"><div class="alert alert-warning" id="thetestbutton" role="alert" onclick="$('#wrapper').fadeOut('fast',function(){$('#starttest').fadeIn('fast')});"><p class="statustext click unselectable">Test</p></div></td>
     <td style="width:33%;"><div class="alert alert-success" role="alert"><p class="statustext click unselectable" data-toggle="modal" data-target="#addlanguage">Add</p></div></td>
 </tr>
     </table>
