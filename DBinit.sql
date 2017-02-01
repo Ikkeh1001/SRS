@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `languages` (
+  `Id` int(2) NOT NULL AUTO_INCREMENT,
+  `language` varchar(30) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
