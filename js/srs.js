@@ -11,6 +11,18 @@ $(document).ready(function(){
 
 });
 
+//Shuffling apparatus
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
 function getLeft(){
 $.post("api.php", {
   "action": "GET_LEFT",
@@ -34,6 +46,10 @@ $.post("api.php", {
       return;
     }
   });
+  shuffle(savedwords);
+  if(savedwords.length > 50){
+    savedwords.splice(49,savedwords.length-50);
+  }
 }
 );
 setTimeout(function(){
